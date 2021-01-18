@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>对话框</title>
+</head>
+
+<body>
+  <!-- 
+  showOverlay       对话框遮盖层显示状态    
+  showClose         对话框关闭按钮显示状态
+  onClose           对话框关闭事件
+  isOpen            对话框开启状态
+   -->
+
+  <!-- 
+  <ly-dialog showOverlay="true" showClose="true" onClose="handleDialogClose" isOpen="true">
+    <ly-dialog-header>模态对话框标题</ly-dialog-header>
+    <ly-dialog-bodyer>这是一段模态对话框的内容展示区域</ly-dialog-bodyer>
+    <ly-dialog-footer>
+      <ly-button>取消</ly-button>
+      <ly-button>同意</ly-button>
+    </ly-dialog-footer>
+  </ly-dialog> 
+  -->
+
+  <div class="ly-dialog ly-dialog-overlay">
+    <div class="ly-dialog-container">
+      <div class="ly-dialog-header">
+        <header class="ly-dialog-header-title">对话框标题</header>
+        <button class="ly-dialog-header-close">x</button>
+      </div>
+      <div class="ly-dialog-bodyer">
+        这是一段对话框内容
+      </div>
+      <div class="ly-dialog-footer">
+        <div class="ly-button-group">
+          <button class="ly-button ly-button-sm">取消</button>
+          <button class="ly-button ly-button-sm">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .ly-dialog {
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      position: fixed;
+      display: flex;
+      padding: 15px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ly-dialog-overlay::before {
+      width: 100%;
+      height: 100%;
+      content: "";
+      display: block;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .ly-dialog-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .ly-dialog-header-title {
+      flex: 1;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .ly-dialog-container {
+      width: 600px;
+      padding: 16px 24px;
+      position: relative;
+      border-radius: 4px;
+      background-color: white;
+    }
+    
+    .ly-dialog-header-close {
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+      text-align: center;
+      line-height: 28px;
+      border-radius: 4px;
+    }
+
+
+    .ly-dialog-bodyer {
+      padding-top: 21px;
+      padding-bottom: 24px;
+    }
+
+    .ly-dialog-header-close:hover {
+      background-color: #eaedefaf;
+    }
+
+    .ly-dialog-header-close:active {
+      background-color: #eaedefff;
+    }
+
+    button {
+      padding: 0px;
+      outline: none;
+      display: block;
+      font-size: 1rem;
+      border-style: none;
+      background-color: transparent;
+    }
+
+    .ly-dialog-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    /* 按钮样式 */
+    .ly-button-group {
+    }
+    
+    .ly-button {
+      border: 1px solid gray;
+      border-radius: 4px;
+    }
+
+    .ly-button-sm {
+      height: 1.8rem;
+      font-size: 0.8rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  </style>
+</body>
+
+</html>
