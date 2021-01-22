@@ -1,16 +1,109 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>React App</title>
-    <link rel="stylesheet" href="style/global.css">
-    <script>
-      var a = new Map();
-      console.log(a.set("1", true));
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>React App</title>
+  <style>
+    body {
+      background-color: #f8f6f7;
+    }
+
+    .ly-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: -5px;
+      justify-content: space-between;
+    }
+
+    .ly-temp-item {
+      width: 23.5%;
+      display: flex;
+      align-content: space-between;
+      flex-direction: column;
+    }
+
+    .ly-temp-bodyer {
+      flex: 1;
+      height: auto;
+      overflow: hidden;
+      border-radius: 4px;
+      background-color: white;
+    }
+
+    .ly-temp-image {
+      width: calc(100%);
+      display: block;
+    }
+
+    .ly-temp-footer {
+      font-size: 100%;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ly-container">
+    <div class="ly-temp-item">
+      <div class="ly-temp-bodyer">
+        <img class="ly-temp-image" src="image/1.png" />
+      </div>
+      <div class="ly-temp-footer">标题1</div>
+    </div>
+
+    <div class="ly-temp-item">
+      <div class="ly-temp-bodyer">
+        <img class="ly-temp-image" src="image/2.png" />
+      </div>
+      <div class="ly-temp-footer">标题2</div>
+    </div>
+
+    <div class="ly-temp-item">
+      <div class="ly-temp-bodyer">
+        <img class="ly-temp-image" src="image/3.png" />
+      </div>
+      <div class="ly-temp-footer">标题3</div>
+    </div>
+
+    <div class="ly-temp-item">
+      <div class="ly-temp-bodyer">
+        <img class="ly-temp-image" src="image/4.png" />
+      </div>
+      <div class="ly-temp-footer">标题4</div>
+    </div>
+
+    <div class="ly-temp-item">
+      <div class="ly-temp-bodyer">
+        <img class="ly-temp-image" src="image/5.png" />
+      </div>
+      <div class="ly-temp-footer">标题8</div>
+    </div>
+
+    <div class="ly-temp-item">
+      <div class="ly-temp-bodyer">
+        <img class="ly-temp-image" src="image/6.png" />
+      </div>
+      <div class="ly-temp-footer">标题6</div>
+    </div>
+
+    <div class="ly-temp-item">
+      <div class="ly-temp-bodyer">
+        <img class="ly-temp-image" src="image/7.png" />
+      </div>
+      <div class="ly-temp-footer">标题7</div>
+    </div>
+
+    <div class="ly-temp-item">
+      <div class="ly-temp-bodyer">
+        <img class="ly-temp-image" src="image/8.png" />
+      </div>
+      <div class="ly-temp-footer">标题8</div>
+    </div>
+  </div>
+</body>
+
 </html>
