@@ -1,7 +1,5 @@
-const AgendaBodyer = ({ text, emoji }) => {
+export const AgendaBodyer = () => {
   return (
     <div className="Agenda-bodyer">Agenda contents</div>
   );
 };
-
-export default AgendaBodyer;

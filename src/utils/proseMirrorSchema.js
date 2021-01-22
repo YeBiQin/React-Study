@@ -8,24 +8,30 @@ const nodes = {
   },
   agendaItem: {
     group: 'agendaItem',
-    content: 'agendaHeader agendaBodyer*',
+    content: 'agendaHeader+ agendaBodyer+',
     toDOM(node) {
       return ['agendaItem', 0];
     },
-    parseDOM: [{ tag: 'agendaItem' }],
+    parseDOM: [{ tag: 'paragraph' }],
   },
   agendaHeader: {
-    content: "text*",
-    parseDOM: [{ tag: "div" }],
+    attrs: {
+      title: { default: "Agenda Title" }
+    },
+    content: "inline*",
+    parseDOM: [{ tag: "agendaHeader" }],
     toDOM: function () {
-      return ["div", 0];
+      return ["agendaHeader", 0];
     }
   },
   agendaBodyer: {
-    content: "text*",
-    parseDOM: [{ tag: "div" }],
+    attrs: {
+      title: { default: "Agenda Content" }
+    },
+    content: "inline*",
+    parseDOM: [{ tag: "agendaBodyer" }],
     toDOM: function () {
-      return ["div", 0];
+      return ["agendaBodyer", 0];
     }
   },
   // 每个 NodeView 的最终叶子节点
@@ -33,27 +39,6 @@ const nodes = {
     group: "inline",
     inline: true
   }
-  // agendaItem: {
-  //   group: 'agendaItem',
-  //   parseDOM: [{ tag: 'agendaItem' }],
-  //   toDOM: function() {
-  //     return ['agendaItem'];
-  //   }
-  // },
-  // agendaTitle: {
-  //   content: "block*",
-  //   parseDOM: [{ tag: "agendaHeader" }],
-  //   toDOM: function () {
-  //     return ["agendaHeader"];
-  //   }
-  // },
-  // agendaContent: {
-  //   content: "block*",
-  //   parseDOM: [{ tag: "agendaBodyer" }],
-  //   toDOM: function () {
-  //     return ["agendaBodyer"];
-  //   }
-  // },
 }
 
 // 配置内容编辑的结构
