@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原生JS实现简单富文本编辑器</title>
+</head>
+
+<body>
+  <div id="control-area">
+    <!--调整为斜体-->
+    <a href="#" data-command='italic' onclick="changeStyle(this.dataset)">斜体</a>
+    <!--调整字号为1号-->
+    <a href="#" data-command='fontSize' data-value="1" onclick="changeStyle(this.dataset)">1号</a>
+    <!-- 调整字体颜色为红色 -->
+    <a href="#" data-command='foreColor' data-value="red" onclick="changeStyle(this.dataset)">红色</a>
+    <!-- 调整字体为楷体 -->
+    <a href="#" class='btn' data-command='fontName' data-value="KaiTi" onclick="changeStyle(this.dataset)">楷</a>
+    <!-- 添加删除线 -->
+    <a href="#" class='btn' data-command='strikeThrough' onclick="changeStyle(this.dataset)">删除线</a>
+    <!-- 调整字体颜色为黑色 -->
+    <a href="#" class='btn ' data-command='foreColor' data-value="black" onclick="changeStyle(this.dataset)">黑</a>
+  </div>
+
+  <div id="ly-editor_container">
+    <div id="ly-editor_tooltip"></div>
+    <div id="ly-editor_content" contenteditable></div>
+  </div>
+
+  <script type="text/javascript">
+    const changeStyle = (data) => {
+      console.log(data);
+      data.value ? document.execCommand(data.command, false, data.value) : document.execCommand(data.command, false, null)
+    }
+  </script>
+</body>
+
+</html>
