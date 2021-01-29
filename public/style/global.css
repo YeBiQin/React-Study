@@ -41,6 +41,7 @@
 }
 
 /* ===================================== */
+
 body {
     margin: 0px;
     padding: 0px;
@@ -54,9 +55,43 @@ body {
     background-color: #f4f5f6;
 }
 
-.leftContainer,
-.rightContainer {
+.leftContainer, .rightContainer {
     flex: 1;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+/* ===================================== */
+
+.ly-editor_container {
+    width: 100%;
+}
+
+.ly-editor_content {
+    height: 500px;
+    padding: 15px;
+    margin-right: 15px;
+    background-color: white;
+}
+
+.ly-editor_tooltip {
+    background-color: white;
+}
+
+.ly-editor_tooltip a:not(:last-child) {
+    margin-right: 15px;
+}
+
+.richEditor-agendaItem {
+    position: relative;
+}
+.agenda-dragHandler {
+    top: 0px;
+    left: -24px;
+    color: gray.100;
+    cursor: pointer;
+    position: absolute;
+}
+.agenda-dragHandler:hover {
+    color: gray.900;
 }

@@ -8,3 +8,10 @@
   margin-right: 15px;
   background-color: white;
 }
+.ly-editor_tooltip {
+  background-color: white;
+}
+
+.ly-editor_tooltip a:not(:last-child) {
+  margin-right: 15px;
+}

@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 
 export class EditorTooltip extends Component {

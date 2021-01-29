@@ -8,13 +8,11 @@ export class NormalEditor extends Component {
     this.editView = null;
   }
 
-  
-
   render() {
     return (
       <div id="ly-editor_container">
         <EditorTooltip/>
-        <div id="ly-editor_content"  contentEditable="true" style={{height: "195px", padding: "15px", borderRadius: "4px", backgroundColor: "white"}} />
+        <div id="ly-editor_content"  contentEditable="true" />
       </div>
     )
   }

@@ -18,7 +18,7 @@ const nodes = {
     attrs: {
       title: { default: "Agenda Title" }
     },
-    content: "inline*",
+    content: "text*",
     parseDOM: [{ tag: "agendaHeader" }],
     toDOM: function () {
       return ["agendaHeader", 0];
@@ -28,7 +28,7 @@ const nodes = {
     attrs: {
       title: { default: "Agenda Content" }
     },
-    content: "inline*",
+    content: "text*",
     parseDOM: [{ tag: "agendaBodyer" }],
     toDOM: function () {
       return ["agendaBodyer", 0];
