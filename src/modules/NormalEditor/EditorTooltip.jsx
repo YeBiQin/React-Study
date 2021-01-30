@@ -7,7 +7,7 @@ export class EditorTooltip extends Component {
   
   render() {
     return (
-      <div id="ly-editor_tooltip">
+      <div className="ly-editor_tooltip">
         <a href="#" onClick={this.changeStyle.bind(this, "italic")}>斜体</a>
         <a href="#" onClick={this.changeStyle.bind(this, "fontSize", 1)}>1号</a>
         <a href="#" onClick={this.changeStyle.bind(this, "strikeThrough")}>删除线</a>

@@ -1,8 +1,8 @@
 import App from './pages/app'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { extendTheme, ChakraProvider } from "@chakra-ui/react"
-// import '../public/style/global.css';
+import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import "./assets/style/global.css"
 
 // 可选的自定义主题
 const themeParam = extendTheme({
@@ -15,22 +15,9 @@ const themeParam = extendTheme({
   }
 });
 
-// const FancyButton = React.forwardRef((props, ref) => (
-//   <button ref={ref} className="FancyButton">
-//     {console.log(ref)}
-//     {console.log(props.children)}
-//     {props.children}
-//   </button>
-// ));
-
-// 你可以直接获取 DOM button 的 ref：
-const ref = React.createRef();
-console.log(ref);
-
 ReactDOM.render(
   <ChakraProvider theme={themeParam}>
     <React.StrictMode>
-      {/* <FancyButton ref={ref}>Click me!</FancyButton> */}
       <App />
     </React.StrictMode>
   </ChakraProvider>,

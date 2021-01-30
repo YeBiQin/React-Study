@@ -32,7 +32,6 @@ class createNode {
   }
 
   renderComponent(container) {
-    // Block 组件
     const BlockComponent = (props) => {
       const componentRef = useRef(null);
 
