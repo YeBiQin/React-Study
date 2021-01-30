@@ -1,23 +1,15 @@
-// const AgendaItem = ({ context }) => {
-//   console.log(context);
-//   const componentRef = (dom) => {
-//     dom && dom.appendChild(context.contentDOM);
-//   }
-//   return (
-//     <div>
-//       <div className="agenda-dragHandler" contentEditable={false}>口</div>
-//       <div ref={componentRef}></div>
-//     </div>
-//   )
-// }
-
 import React, { forwardRef } from "react";
-const AgendaItem = forwardRef((props, ref) => {
+
+const AgendaItem = forwardRef(({ children, deleteNode, editorView }, ref) => {
   return (
     <div className="agenda-item">
-      <div className="agenda-dragHandler" contentEditable={false}>口</div>
+      <div className="agenda-handler" contentEditable={false}>
+        <div className="agenda-drag ly-icon_icon-setting" onClick={deleteNode} />
+        <div className="agenda-delete ly-icon_delete" />
+        {/* {editorView.state.doc.childCount !== 1 && <div className="agenda-delete ly-icon_delete" />} */}
+      </div>
       <div className="agenda-container" ref={ref}>
-        {props.children}
+        {children}
       </div>
     </div>
   )

@@ -35,6 +35,10 @@
 
 /* ===================================== */
 
+html {
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 body {
     margin: 0px;
     padding: 0px;
@@ -43,19 +47,19 @@ body {
 .App {
     width: 100vw;
     height: 100vh;
-    padding: 15px;
+    /* padding: 15px; */
     display: flex;
     background-color: #f4f5f6;
 }
 
 .leftContainer, .rightContainer {
     flex: 1;
+    padding: 30px;
     min-width: 50%;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 /* ===================================== */
+
 .ly-editor_container {
     width: 100%;
 }
@@ -70,7 +74,7 @@ body {
     padding: 5px;
     display: flex;
     font-size: 14px;
-    background-color: rgb(170, 170, 170);
+    background-color: rgb(226, 226, 226);
 }
 
 .ly-editor_tooltip a {
@@ -92,19 +96,30 @@ body {
     position: relative;
 }
 
-.agenda-dragHandler {
-    top: 0px;
+.richEditor-agendaItem:hover .agenda-handler {
+    display: block;
+}
+
+.agenda-handler {
+    top: 24px;
     left: -24px;
     color: gray.100;
     cursor: pointer;
+    display: none;
     position: absolute;
+    transition: all .15s ease-out;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
 }
 
-.agenda-dragHandler:hover {
-    color: gray.900;
+.agenda-drag {
+    margin-bottom: 15px;
 }
 
 /* AgendaHeader */
+
 .richEditor-agendaHeader {
     padding-bottom: 12px;
 }
@@ -126,7 +141,7 @@ body {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }

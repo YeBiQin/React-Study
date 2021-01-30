@@ -19,7 +19,6 @@ export class EditorTooltip extends Component {
   }
 
   changeStyle(command, value) {
-    console.log(command, value);
     value ? document.execCommand(command, false, value) : document.execCommand(command, false, null);
   }
 }

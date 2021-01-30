@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 import "./assets/style/global.css"
+import "./assets/style/iconfont.css"
+
 
 // 可选的自定义主题
 const themeParam = extendTheme({

@@ -12,7 +12,6 @@ class createNode {
     this.componentRef = createRef();
     this.onCreatePortal = onCreatePortal;
     this.onRemovePortal = onRemovePortal;
-    // console.log(this);
     // 开始初始化段落结构
     this.init();
   }
@@ -20,7 +19,7 @@ class createNode {
   init() {
     this.dom = document.createElement('div');
     this.dom.classList.add(`richEditor-${this.node.type.name}`);
-
+    this.dom.style.marginLeft = `${this.node.attrs.indent * 24}px`;
     // 判断是否是末尾节点，如果不是则证明还有子节点
     if (!this.node.isLeaf) {
       this.contentDOM = document.createElement('div');
@@ -29,6 +28,13 @@ class createNode {
     }
     // 将组件渲染进容器节点内
     this.renderComponent(this.dom);
+  }
+
+  deleteNode = () => {
+    const $state = this.editorView.state;
+    this.editorView.dispatch(
+      $state.tr.delete(this.getPosition(), this.getPosition() + $state.doc.nodeAt(this.getPosition()).content.size)
+    );
   }
 
   renderComponent(container) {
@@ -50,6 +56,7 @@ class createNode {
           dom={this.dom}
           node={this.node}
           getPos={this.getPos}
+          deleteNode={this.deleteNode}
           editorView={this.editorView}
           contentDOM={this.contentDOM}
           decorations={this.decorations} />

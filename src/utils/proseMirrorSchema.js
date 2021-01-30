@@ -12,10 +12,11 @@ const nodes = {
     toDOM(node) {
       return ['agendaItem', 0];
     },
-    parseDOM: [{ tag: 'paragraph' }],
+    parseDOM: [{ tag: 'agendaItem' }]
   },
   agendaHeader: {
     attrs: {
+      indent: { default: 0 },
       title: { default: "Agenda Title" }
     },
     content: "text*",
@@ -26,6 +27,7 @@ const nodes = {
   },
   agendaBodyer: {
     attrs: {
+      indent: { default: 0 },
       title: { default: "Agenda Content" }
     },
     content: "text*",

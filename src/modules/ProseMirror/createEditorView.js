@@ -6,8 +6,9 @@ import { EditorView } from "prosemirror-view";
 import { EditorState } from "prosemirror-state";
 // prosemirror其他功能
 import { schema } from "../../utils/proseMirrorSchema";
-import { keymap } from "prosemirror-keymap"
-import { history } from "prosemirror-history"
+import { keymap } from "prosemirror-keymap";
+import { history } from "prosemirror-history";
+import applyDevTools from 'prosemirror-dev-tools';
 // 获取自定义渲染段落结构的组件
 import { agendaList } from "./agendaComponents";
 
@@ -33,12 +34,18 @@ export function createEditorView(dom) {
     nodeViews[item.parseName] = new createEditorNode(item);
   });
 
-  // 使用状态editorState创建编辑器视图，并附加到body节点。
-  return new EditorView(dom, {
+  // 创建富文本编辑视图
+  const editorView = new EditorView(dom, {
     state: editorState,
     nodeViews,
     dispatchTransaction(transaction) {
       this.updateState(this.state.apply(transaction));  // 更新数据
     }
   });
+
+  // 富文本开发调试工具
+  applyDevTools(editorView);
+
+  // 使用状态editorState创建编辑器视图，并附加到body节点。
+  return editorView;
 }

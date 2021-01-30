@@ -36,7 +36,7 @@ function App() {
     return (
         <div className="App">
             <div className="leftContainer">
-                <NormalEditor/>
+                <NormalEditor />
             </div>
             <div className="rightContainer">
                 <div className="richEditor-container" ref={editorDom}></div>
