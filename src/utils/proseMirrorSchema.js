@@ -16,7 +16,6 @@ const nodes = {
   },
   agendaHeader: {
     attrs: {
-      indent: { default: 0 },
       title: { default: "Agenda Title" }
     },
     content: "text*",

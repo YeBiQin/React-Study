@@ -5,35 +5,141 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>原生JS实现简单富文本编辑器</title>
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .div1,
+    .div2,
+    .div3 {
+      margin: 0 20px;
+      float: left;
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    p {
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .p1 {
+      width: 50px;
+      background-color: pink;
+      margin: 5px 0;
+    }
+
+    .p2 {
+      width: 80px;
+      background-color: burlywood;
+      margin: 5px 0;
+    }
+
+    .p3 {
+      width: 110px;
+      background-color: rgb(133, 88, 29);
+      margin: 5px 0;
+    }
+
+    .p4 {
+      width: 140px;
+      background-color: rgb(172, 37, 48);
+      margin: 5px 0;
+    }
+
+    .p5 {
+      width: 170px;
+      background-color: rgb(17, 182, 31);
+      margin: 5px 0;
+    }
+
+    .p6 {
+      width: 200px;
+      background-color: rgb(90, 33, 155);
+      margin: 5px 0;
+    }
+
+    #ly-editor_container {
+      width: 100%;
+      height: 100px;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="control-area">
-    <!--调整为斜体-->
-    <a href="#" data-command='italic' onclick="changeStyle(this.dataset)">斜体</a>
-    <!--调整字号为1号-->
-    <a href="#" data-command='fontSize' data-value="1" onclick="changeStyle(this.dataset)">1号</a>
-    <!-- 调整字体颜色为红色 -->
-    <a href="#" data-command='foreColor' data-value="red" onclick="changeStyle(this.dataset)">红色</a>
-    <!-- 调整字体为楷体 -->
-    <a href="#" class='btn' data-command='fontName' data-value="KaiTi" onclick="changeStyle(this.dataset)">楷</a>
-    <!-- 添加删除线 -->
-    <a href="#" class='btn' data-command='strikeThrough' onclick="changeStyle(this.dataset)">删除线</a>
-    <!-- 调整字体颜色为黑色 -->
-    <a href="#" class='btn ' data-command='foreColor' data-value="black" onclick="changeStyle(this.dataset)">黑</a>
+  <div id="ly-editor_container" contenteditable>
+    <div>asdasdasd</div>
+    <div>啊发发发生</div>
   </div>
-
-  <div id="ly-editor_container">
-    <div id="ly-editor_tooltip"></div>
-    <div id="ly-editor_content" contenteditable></div>
+  <div id="div1" class="div1">
+    <!-- 在h5中，如果想拖拽元素，就必须为元素添加draggable="true"。图片和超链接默认就可以拖拽 -->
+    <p id="pe3" class="p3" draggable="true">3</p>
+    <p id="pe2" class="p2" draggable="true">2</p>
+    <p id="pe5" class="p5" draggable="true">5</p>
+    <p id="pe1" class="p1" draggable="true">1</p>
+    <p id="pe6" class="p6" draggable="true">6</p>
+    <p id="pe4" class="p4" draggable="true">4</p>
   </div>
+  <div id="div2" class="div2"></div>
 
-  <script type="text/javascript">
-    const changeStyle = (data) => {
-      console.log(data);
-      data.value ? document.execCommand(data.command, false, data.value) : document.execCommand(data.command, false, null)
+  <div id="div3" class="div3"></div>
+
+  <script>
+    /* 拖拽元素支持的事件
+        ondrag 应用于拖拽元素，整个拖拽过程都会调用
+        ondragstart 应用于拖拽元素，当拖拽开始时调用
+        ondragleave 应用于拖拽元素，当鼠标离开拖拽元素是调用
+        ondragend 应用于拖拽元素，当拖拽结束时调用
+
+        目标元素支持的事件
+        ondragenter 应用于目标元素，当拖拽元素进入时调用
+        ondragover 应用于目标元素，当停留在目标元素上时调用
+        ondrop 应用于目标元素，当在目标元素上松开鼠标时调用
+        ondragleave 应用于目标元素，当鼠标离开目标元素时调用
+    */
+
+    // var obj = null; /* 当前被拖拽的值*/
+
+    document.ondragstart = function (e) {
+      /*通过dataTransfer来实现数据的存储与获取
+          setData(format, data)
+          format: 数据的类型： text/html  text/uri-list
+          Data: 数据： 一般来说是字符串值
+      */
+      // e.dataTransfer.setData("Text", e.target.id);
+      e.target.style.opacity = 0.2;
+      e.dataTransfer.setData("text", e.target.id);
+      console.log(e.target.id);
     }
+
+    document.ondragend = function (e) {
+      e.target.style.opacity = 1;
+    }
+
+    /*浏览器默认会阻止ondrop事件：我们必须在ondrapover中阻止默认行为*/
+    document.ondragover = function (e) {
+      e.preventDefault();
+    }
+
+    document.ondrop = function (e) {
+      /*通过e.dataTransfer.setData存储的数据，只能在drop事件中获取*/
+      var data = e.dataTransfer.getData("text");
+      e.target.appendChild(document.getElementById(data));
+    }
+
   </script>
 </body>
 

@@ -39,6 +39,7 @@ export function createEditorView(dom) {
     state: editorState,
     nodeViews,
     dispatchTransaction(transaction) {
+      console.log(transaction);
       this.updateState(this.state.apply(transaction));  // 更新数据
     }
   });

@@ -17,9 +17,12 @@ class createNode {
   }
 
   init() {
+    console.log(this.node);
     this.dom = document.createElement('div');
     this.dom.classList.add(`richEditor-${this.node.type.name}`);
-    this.dom.style.marginLeft = `${this.node.attrs.indent * 24}px`;
+    if (this.node.attrs.indent) {
+      this.dom.style.marginLeft = `${this.node.attrs.indent * 24}px`;
+    }
     // 判断是否是末尾节点，如果不是则证明还有子节点
     if (!this.node.isLeaf) {
       this.contentDOM = document.createElement('div');
