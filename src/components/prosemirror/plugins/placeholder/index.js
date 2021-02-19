@@ -1,7 +1,7 @@
 import { Plugin } from 'prosemirror-state';
 import { Decoration, DecorationSet } from 'prosemirror-view';
 
-export default (options) => {
+export function agendaPlaceholder(options) {
   return new Plugin({
     props: {
       decorations(state) {

@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
-const AgendaHeader = forwardRef((props, ref) => {
+
+const AgendaTitle = forwardRef((props, ref) => {
   return (
     <div className="agenda-header">
       <div className="agenda-icon">
@@ -10,6 +11,6 @@ const AgendaHeader = forwardRef((props, ref) => {
     </div>
   )
 });
-AgendaHeader.parseName = "agendaHeader";
+AgendaTitle.parseName = "agendaTitle";
 
-export default AgendaHeader;
+export default AgendaTitle;

@@ -1,19 +1,17 @@
-import placeholder from "./plugins";
-import { keymaps } from "./commands";
-import { createEditorNode } from "./createEditorNode";
 
-import { EditorView } from "prosemirror-view";
-import { EditorState } from "prosemirror-state";
-// prosemirror其他功能
-import { schema } from "../../utils/proseMirrorSchema";
+// 引入prosemirror模块
 import { keymap } from "prosemirror-keymap";
 import { history } from "prosemirror-history";
 import applyDevTools from 'prosemirror-dev-tools';
-// 获取自定义渲染段落结构的组件
-import { agendaList } from "./agendaComponents";
+import { EditorView } from "prosemirror-view";
+import { EditorState } from "prosemirror-state";
+// 引入自定义的功能组件
+import { schema } from "./script/schema";
+import { keymaps } from "../../components/prosemirror/plugins/commands";
+import { AgendaViews } from "./script/nodes";
+import { agendaPlaceholder as placeholder } from "../../components/prosemirror/plugins/placeholder";
 
-
-export function createEditorView(dom) {
+export function createAgendaEditorView(dom) {
   // 初始化富文本状态 - 通过基础规则schema创建并保持新的state引用
   const editorState = EditorState.create({
     schema,
@@ -22,24 +20,17 @@ export function createEditorView(dom) {
       keymap(keymaps),
       history(),
       placeholder({
-        agendaHeader: "Please enter the title of the agenda",
-        agendaBodyer: "Please input agenda content"
+        paragraph: "Please input agenda content",
+        agendaTitle: "Please enter the title of the agenda"
       })
     ]
-  });
-
-  // 自定义渲染段落结构
-  const nodeViews = Object.create(Array);
-  agendaList.forEach((item) => {
-    nodeViews[item.parseName] = new createEditorNode(item);
   });
 
   // 创建富文本编辑视图
   const editorView = new EditorView(dom, {
     state: editorState,
-    nodeViews,
+    nodeViews: AgendaViews(),
     dispatchTransaction(transaction) {
-      console.log(transaction);
       this.updateState(this.state.apply(transaction));  // 更新数据
     }
   });

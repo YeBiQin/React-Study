@@ -1,12 +1,11 @@
 import React, { forwardRef } from "react";
 
-const AgendaItem = forwardRef(({ children, deleteNode, editorView }, ref) => {
+const AgendaItem = forwardRef(({ children, deleteNode }, ref) => {
   return (
     <div className="agenda-item">
       <div className="agenda-handler" contentEditable={false}>
-        <div className="agenda-drag ly-icon_icon-setting" onClick={deleteNode} />
-        <div className="agenda-delete ly-icon_delete" />
-        {/* {editorView.state.doc.childCount !== 1 && <div className="agenda-delete ly-icon_delete" />} */}
+        <div className="agenda-drag">拖</div>
+        <div className="agenda-delete" onClick={deleteNode}>删</div>
       </div>
       <div className="agenda-container" ref={ref}>
         {children}

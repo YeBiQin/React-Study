@@ -17,7 +17,6 @@ class createNode {
   }
 
   init() {
-    console.log(this.node);
     this.dom = document.createElement('div');
     this.dom.classList.add(`richEditor-${this.node.type.name}`);
     if (this.node.attrs.indent) {

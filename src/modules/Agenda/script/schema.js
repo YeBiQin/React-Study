@@ -8,37 +8,37 @@ const nodes = {
   },
   agendaItem: {
     group: 'agendaItem',
-    content: 'agendaHeader+ agendaBodyer+',
+    content: 'agendaTitle+ paragraph+',
+    defining: true,
+    draggable: true,
+    isolating: true,
+    parseDOM: [{ tag: 'agendaItem' }],
     toDOM(node) {
       return ['agendaItem', 0];
-    },
-    parseDOM: [{ tag: 'agendaItem' }]
-  },
-  agendaHeader: {
-    attrs: {
-      title: { default: "Agenda Title" }
-    },
-    content: "text*",
-    parseDOM: [{ tag: "agendaHeader" }],
-    toDOM: function () {
-      return ["agendaHeader", 0];
     }
   },
-  agendaBodyer: {
-    attrs: {
-      indent: { default: 0 },
-      title: { default: "Agenda Content" }
-    },
-    content: "text*",
-    parseDOM: [{ tag: "agendaBodyer" }],
+  agendaTitle: {
+    content: "inline*",
+    parseDOM: [{ tag: "agendaTitle" }],
     toDOM: function () {
-      return ["agendaBodyer", 0];
+      return ["agendaTitle", 0];
+    }
+  },
+  paragraph:{
+    attrs: {
+      indent: { default: 0 }
+    },
+    group: 'block',
+    content: "inline*",
+    draggable: true,
+    parseDOM: [{ tag: "paragraph" }],
+    toDOM: function () {
+      return ["paragraph", 0];
     }
   },
   // 每个 NodeView 的最终叶子节点
   text: {
-    group: "inline",
-    inline: true
+    group: "inline"
   }
 }
 
